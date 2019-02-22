@@ -1,0 +1,7 @@
+---
+mariadb_version: 10.3
+mariadb_gpg_key: https://yum.mariadb.org/RPM-GPG-KEY-MariaDB
+
+mariadb_repository:
+  redhat:
+    - http://yum.mariadb.org/{{ mariadb_version }}/{{ ansible_distribution | lower }}{{ ansible_distribution_major_version }}-amd64

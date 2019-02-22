@@ -1,0 +1,9 @@
+---
+- name: "(Install: CentOS/RedHat) Add MariaDB Repository"
+  yum_repository:
+    file: MariaDB
+    name: mariadb
+    baseurl: "{{ mariadb_repository.redhat }}"
+    description: MariaDB
+    gpgkey: "{{ mariadb_gpg_key }}"
+    gpgcheck: yes
