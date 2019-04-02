@@ -1,7 +1,7 @@
 ---
 galaxy_info:
   author: Agnesius Santo Naibaho
-  description: Install MariaDB Repository
+  description: Install MariaDB Server
   company: Cloudweeb
 
   license: MIT

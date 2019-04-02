@@ -2,10 +2,11 @@
 
 [mysqld]
 datadir=/var/lib/mysql
-socket=/var/lib/mysql/mysql.sock
+socket={{ mariadb_socket_file }}
 symbolic-links=0
 
 bind_address = {{ mariadb_bind_address }}
+port = {{ mariadb_port }}
 
 skip-external-locking
 key_buffer_size = {{ mariadb_key_buffer_size }}
@@ -28,7 +29,7 @@ innodb_buffer_pool_size = {{ mariadb_innodb_buffer_pool_size }}
 innodb_log_file_size    = {{ mariadb_innodb_log_file_size }}
 innodb_buffer_pool_instances = {{ mariadb_innodb_buffer_pool_instances }}
 
-slow_query_log = {{ mariadb_slow_query_log }}
+slow_query_log = {{ '1' if mariadb_slow_query_log|bool else '0' }}
 slow_query_log_file = {{ mariadb_slow_query_log_file }}
 
 log-error = {{ mariadb_error_log_file }}
@@ -40,4 +41,4 @@ skip-name-resolve = {{ '1' if mariadb_skip_networking|bool else '0' }}
 #
 # include all files from the config directory
 #
-!includedir /etc/my.cnf.d
+!includedir {{ mariadb_include_dir }}

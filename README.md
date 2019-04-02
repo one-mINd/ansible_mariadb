@@ -1,6 +1,18 @@
----
+Ansible Role Mariadb
+=========
 
-mariadb_version: 10.3   # MariaDB version that wants to be installed
+Ansible role to install MariaDB server
+
+Requirements
+------------
+
+None
+
+Role Variables
+--------------
+
+```YAML
+mariadb_version: 10.3     # MariaDB version that wants to be installed
 
 # MariaDB network config
 mariadb_skip_networking: false
@@ -36,12 +48,51 @@ mariadb_innodb_buffer_pool_size: 128M
 mariadb_innodb_log_file_size: 48M
 mariadb_innodb_buffer_pool_instances: '1'
 
+# List of database users that wants to be added or deleted
 mariadb_users: []
 # - name: example
 #   password: example
 #   priv: "*.*:USAGE"
 #   state: present
+# - name: example2
+#   state: absent
 
 mariadb_databases: []
 # - name: example
 #   state: present
+```
+
+Dependencies
+------------
+
+None
+
+Example Playbook
+----------------
+
+    - hosts: servers
+      vars:
+        mariadb_root_password: "{{ lookup('password', '/tmp/mariadb_root_password length=15 chars=ascii_letters,digits,hexdigits') }}"
+
+        mariadb_users:
+          - name: example
+            password: "{{ lookup('password', '/tmp/mariadb_example_password length=15 chars=ascii_letters,digits,hexdigits') }}"
+            priv: "example.*:ALL"
+            state: present
+
+        mariadb_databases:
+          - name: example
+            state: present
+
+      roles:
+        - role: cloudweeb.mariadb
+
+License
+-------
+
+BSD/MIT
+
+Author Information
+------------------
+
+Agnesius Santo Naibaho

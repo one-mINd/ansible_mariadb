@@ -15,5 +15,5 @@ def test_hosts_file(host):
 
 
 def test_socket(host):
-    s = host.socket("unix:///var/lib/mysql/mysql.sock")
+    s = host.socket("tcp://127.0.0.1:3306")
     assert s.is_listening
