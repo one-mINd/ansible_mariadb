@@ -1,7 +1,41 @@
 ---
 mariadb_version: 10.3
-mariadb_gpg_key: https://yum.mariadb.org/RPM-GPG-KEY-MariaDB
 
-mariadb_repository:
-  redhat:
-    - http://yum.mariadb.org/{{ mariadb_version }}/{{ ansible_distribution | lower }}{{ ansible_distribution_major_version }}-amd64
+mariadb_bind_address: '0.0.0.0'
+
+mariadb_error_log_file: /var/lib/mysql/{{ ansible_fqdn }}.err
+mariadb_pid_file: /var/lib/mysql/{{ ansible_fqdn }}.pid
+mariadb_slow_query_log_file: /var/lib/mysql/{{ ansible_fqdn }}.slow-query.log
+
+mariadb_key_buffer_size: 16K
+mariadb_max_allowed_packet: 1M
+mariadb_table_open_cache: '4'
+mariadb_sort_buffer_size: 64K
+mariadb_read_buffer_size: 256K
+mariadb_read_rnd_buffer_size: 256K
+mariadb_net_buffer_length: 2K
+mariadb_thread_stack: 240K
+mariadb_max_connections: '50'
+mariadb_max_user_connections: '25'
+mariadb_wait_timeout: '10'
+mariadb_interactive_timeout: '50'
+mariadb_long_query_time: '5'
+mariadb_slow_query_log: '0'
+
+mariadb_innodb_file_per_table: true
+mariadb_innodb_buffer_pool_size: 128M
+mariadb_innodb_log_file_size: 48M
+mariadb_innodb_buffer_pool_instances: '1'
+
+mariadb_skip_networking: false
+mariadb_skip_name_resolve: true
+
+mariadb_users: []
+# - name: example
+#   password: example
+#   priv: "*.*:USAGE"
+#   state: present
+
+mariadb_databases: []
+# - name: example
+#   state: present
