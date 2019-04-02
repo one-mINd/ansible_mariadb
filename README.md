@@ -1,6 +1,8 @@
 Ansible Role Mariadb
 =========
 
+[![Build Status](https://travis-ci.com/cloudweeb/cloudweeb.mariadb.svg?branch=master)](https://travis-ci.com/cloudweeb/cloudweeb.mariadb)
+
 Ansible role to install MariaDB server
 
 Requirements
