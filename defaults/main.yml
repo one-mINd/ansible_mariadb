@@ -2,6 +2,8 @@
 
 mariadb_version: 10.3   # MariaDB version that wants to be installed
 
+mysql_root_password: ''
+
 # MariaDB network config
 mariadb_skip_networking: false
 mariadb_skip_name_resolve: false
