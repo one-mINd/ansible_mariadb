@@ -12,7 +12,8 @@
 
     - name: (Install CentOS/RedHat) Install MariaDB packages
       yum:
-        name: "{{ mariadb_packages }}"
+        name: "{{ query('flattened', ['{{ mariadb_base_packages }}',
+                                      '{{ mariadb_packages }}']) }}"
         state: present
 
   when: ansible_os_family == 'RedHat'
@@ -38,7 +39,8 @@
 
     - name: (Install Debian) Install MariaDB packages
       apt:
-        name: "{{ mariadb_packages }}"
+        name: "{{ query('flattened', ['{{ mariadb_base_packages }}',
+                                      '{{ mariadb_packages }}']) }}"
         state: present
 
   when: ansible_os_family == 'Debian'

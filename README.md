@@ -14,7 +14,14 @@ Role Variables
 --------------
 
 ```YAML
-mariadb_version: 10.3     # MariaDB version that wants to be installed
+mariadb_version: 10.3   # MariaDB version that wants to be installed
+
+mariadb_root_password: password
+
+# MariaDB additional packages
+mariadb_packages: []
+# - MariaDB-devel
+# - MariaDB-shared
 
 # MariaDB network config
 mariadb_skip_networking: false
@@ -50,14 +57,11 @@ mariadb_innodb_buffer_pool_size: 128M
 mariadb_innodb_log_file_size: 48M
 mariadb_innodb_buffer_pool_instances: '1'
 
-# List of database users that wants to be added or deleted
 mariadb_users: []
 # - name: example
 #   password: example
 #   priv: "*.*:USAGE"
 #   state: present
-# - name: example2
-#   state: absent
 
 mariadb_databases: []
 # - name: example

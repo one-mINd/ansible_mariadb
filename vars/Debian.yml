@@ -6,7 +6,7 @@ mariadb_conf_file: /etc/mysql/my.cnf
 mariadb_include_dir: /etc/mysql/conf.d/
 mariadb_socket_file: /var/run/mysqld/mysqld.sock
 
-mariadb_packages:
+mariadb_base_packages:
   - mariadb-server
   - mariadb-client
   - python-pymysql

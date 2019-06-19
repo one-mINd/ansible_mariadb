@@ -2,7 +2,12 @@
 
 mariadb_version: 10.3   # MariaDB version that wants to be installed
 
-mariadb_root_password: ''
+mariadb_root_password: password
+
+# MariaDB additional packages
+mariadb_packages: []
+# - MariaDB-devel
+# - MariaDB-shared
 
 # MariaDB network config
 mariadb_skip_networking: false
