@@ -1,11 +1,11 @@
 ---
-
-mariadb_version: 10.3   # MariaDB version that wants to be installed
+mariadb_version: 10.4   # MariaDB version that wants to be installed
 
 mariadb_root_password: password
 
 # MariaDB additional packages
-mariadb_packages: []
+mariadb_packages:
+  - "{% if 'python3' in ansible_python_interpreter|default('') %}python3-mysqldb{% else %}python-mysqldb{% endif %}"
 # - MariaDB-devel
 # - MariaDB-shared
 
