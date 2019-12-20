@@ -16,14 +16,18 @@
   check_mode: false
 
 - name: Check if .my.cnf exists
+  become: yes
+  become_user: root
   stat:
-    path: /root/.my.cnf
+    path: "~/.my.cnf"
   register: mycnf
 
 - name: Get password from .my.cnf
+  become: yes
+  become_user: root
   shell:
     cmd: |
-      grep password /root/.my.cnf | cut -d= -f2 | tr -d '"'
+      grep password ~/.my.cnf | cut -d= -f2 | tr -d '"'
   register: mycnf_current_password
   changed_when: false
   when: mycnf.stat.exists
@@ -32,19 +36,23 @@
 # the root password correctly. See: https://goo.gl/MSOejW
 # Set root password for MySQL >= 5.7.x.
 - name: Update MySQL root password for localhost root account (5.7.x+).
+  become: yes
+  become_user: root
   shell:
     cmd: |
       mysql -u root -NBe 'SET old_passwords=0; ALTER USER "root"@"{{ item }}" IDENTIFIED BY "{{ mariadb_root_password }}";'
   with_items: "{{ mysql_root_hosts.stdout_lines|default([]) }}"
-  when: mycnf_current_password is defined and mycnf_current_password.stdout != mariadb_root_password
+  when: (mycnf_current_password.stdout is defined and mycnf_current_password.stdout != mariadb_root_password) or mycnf_current_password.stdout is not defined
 
 - name: Set my.cnf file with root password credentials
+  become: yes
+  become_user: root
   copy:
     content: |
       [client]
       user="root"
       password="{{ mariadb_root_password }}"
-    dest: /root/.my.cnf
+    dest: ~/.my.cnf
     mode: 0600
   no_log: true
 
