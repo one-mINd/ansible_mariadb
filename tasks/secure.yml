@@ -57,12 +57,16 @@
   no_log: true
 
 - name: MySQL secure install | Remove anonymous users
+  become: yes
+  become_user: root
   mysql_user:
     name: ''
     host_all: true
     state: absent
 
 - name: MySQL secure install | Remove test database
+  become: yes
+  become_user: root
   mysql_db:
     name: test
     state: absent
