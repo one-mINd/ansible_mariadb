@@ -63,6 +63,7 @@
     name: ''
     host_all: true
     state: absent
+    login_unix_socket: /var/run/mysqld/mysqld.sock
 
 - name: MySQL secure install | Remove test database
   become: yes
@@ -70,3 +71,4 @@
   mysql_db:
     name: test
     state: absent
+    login_unix_socket: /var/run/mysqld/mysqld.sock
