@@ -9,4 +9,4 @@ mariadb_socket_file: /var/run/mysqld/mysqld.sock
 mariadb_base_packages:
   - mariadb-server
   - mariadb-client
-  - python-pymysql
+  - python3-pymysql
