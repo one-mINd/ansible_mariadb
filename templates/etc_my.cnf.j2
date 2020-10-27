@@ -1,7 +1,7 @@
 {{ ansible_managed | comment }}
 
 [mysqld]
-datadir=/var/lib/mysql
+datadir={{ mariadb_datadir }}
 socket={{ mariadb_socket_file }}
 symbolic-links=0
 

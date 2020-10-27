@@ -29,12 +29,12 @@ mariadb_skip_name_resolve: false
 mariadb_bind_address: '0.0.0.0'   # MariaDB listen address
 mariadb_port: '3306'              # MariaDB listen port
 
-mariadb_pid_file: /var/lib/mysql/{{ ansible_fqdn }}.pid
+mariadb_pid_file: {{ mariadb_datadir }}/{{ ansible_fqdn }}.pid
 
 # MariaDB log config
 mariadb_slow_query_log: false
-mariadb_error_log_file: /var/lib/mysql/{{ ansible_fqdn }}.err
-mariadb_slow_query_log_file: /var/lib/mysql/{{ ansible_fqdn }}.slow-query.log
+mariadb_error_log_file: {{ mariadb_datadir }}/{{ ansible_fqdn }}.err
+mariadb_slow_query_log_file: {{ mariadb_datadir }}/{{ ansible_fqdn }}.slow-query.log
 
 # MariaDB resource config
 mariadb_key_buffer_size: 16K
