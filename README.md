@@ -1,17 +1,18 @@
-Ansible Role Mariadb
-=========
+# sbog/mariadb
 
-[![Build Status](https://travis-ci.com/cloudweeb/cloudweeb.mariadb.svg?branch=master)](https://travis-ci.com/cloudweeb/cloudweeb.mariadb)
+[![Build Status](https://travis-ci.com/sorrowless/ansible_mariadb.svg?branch=master)](https://travis-ci.com/sorrowless/ansible_mariadb)
+[![Ansible Role](https://img.shields.io/ansible/role/42562)](https://galaxy.ansible.com/sorrowless/mariadb)
+[![Ansible Quality Score](https://img.shields.io/ansible/quality/42562)](https://galaxy.ansible.com/sorrowless/mariadb)
+[![Ansible Role](https://img.shields.io/ansible/role/d/42562)](https://galaxy.ansible.com/sorrowless/mariadb)
+[![GitHub](https://img.shields.io/github/license/sorrowless/ansible_mariadb)](https://github.com/sorrowless/ansible_mariadb/blob/master/LICENSE)
 
 Ansible role to install MariaDB server
 
-Requirements
-------------
+## Requirements
 
 None
 
-Role Variables
---------------
+## Role Variables
 
 ```YAML
 mariadb_version: 10.3   # MariaDB version that wants to be installed
@@ -68,13 +69,11 @@ mariadb_databases: []
 #   state: present
 ```
 
-Dependencies
-------------
+## Dependencies
 
 None
 
-Example Playbook
-----------------
+## Example Playbook
 
     - hosts: servers
       vars:
@@ -93,12 +92,11 @@ Example Playbook
       roles:
         - role: cloudweeb.mariadb
 
-License
--------
+## License
 
 BSD/MIT
 
-Author Information
-------------------
+## Author Information
 
+[Stan Bogatkin](https://sbog.ru)
 Agnesius Santo Naibaho

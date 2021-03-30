@@ -16,4 +16,4 @@
         state: present
 
   roles:
-    - role: cloudweeb.mariadb
+    - role: sorrowless.mariadb
