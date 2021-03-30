@@ -19,6 +19,9 @@
   when: ansible_os_family == 'RedHat'
 
 - block:
+    - name: Update apt cache
+      apt:
+        update_cache: yes
 
     - name: (Install Debian) Ensure gnupg is installed
       apt:
