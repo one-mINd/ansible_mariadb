@@ -1,9 +1,9 @@
 # sbog/mariadb
 
 [![Build Status](https://travis-ci.com/sorrowless/ansible_mariadb.svg?branch=master)](https://travis-ci.com/sorrowless/ansible_mariadb)
-[![Ansible Role](https://img.shields.io/ansible/role/42562)](https://galaxy.ansible.com/sorrowless/mariadb)
-[![Ansible Quality Score](https://img.shields.io/ansible/quality/42562)](https://galaxy.ansible.com/sorrowless/mariadb)
-[![Ansible Role](https://img.shields.io/ansible/role/d/42562)](https://galaxy.ansible.com/sorrowless/mariadb)
+[![Ansible Role](https://img.shields.io/ansible/role/45430)](https://galaxy.ansible.com/sorrowless/mariadb)
+[![Ansible Quality Score](https://img.shields.io/ansible/quality/45430)](https://galaxy.ansible.com/sorrowless/mariadb)
+[![Ansible Role](https://img.shields.io/ansible/role/d/45430)](https://galaxy.ansible.com/sorrowless/mariadb)
 [![GitHub](https://img.shields.io/github/license/sorrowless/ansible_mariadb)](https://github.com/sorrowless/ansible_mariadb/blob/master/LICENSE)
 
 Ansible role to install MariaDB server
