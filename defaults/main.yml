@@ -16,6 +16,7 @@ mariadb_bind_address: '0.0.0.0'   # MariaDB listen address
 mariadb_port: '3306'              # MariaDB listen port
 
 mariadb_datadir: /var/lib/mysql
+mariadb_tmpdir: /tmp
 mariadb_pid_file: "{{ mariadb_datadir }}/{{ ansible_fqdn }}.pid"
 
 # MariaDB log config
