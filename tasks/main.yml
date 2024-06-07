@@ -10,11 +10,18 @@
     - "{{ ansible_os_family }}.yml"
 
 - import_tasks: install.yml
+  when: not mariadb_docker
+
+- import_tasks: docker.yml
+  when: mariadb_docker
 
 - import_tasks: configure.yml
 
 - import_tasks: secure.yml
+  when: not mariadb_docker
 
 - import_tasks: users.yml
+  when: not mariadb_docker
 
 - import_tasks: databases.yml
+  when: not mariadb_docker

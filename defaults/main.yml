@@ -54,3 +54,13 @@ mariadb_users: []
 mariadb_databases: []
 # - name: example
 #   state: present
+
+mariadb_docker: False
+mariadb_docker_image: mariadb:10.4
+mariadb_docker_container_name: mariadb
+mariadb_docker_mariadb_user: root
+mariadb_docker_mysql_root_password: password
+mariadb_docker_mariadb_password: password
+mariadb_docker_mariadb_database: db
+mariadb_docker_healthcheck: True
+mariadb_docker_additional_env: []

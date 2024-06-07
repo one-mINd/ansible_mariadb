@@ -1,6 +1,13 @@
 ---
-
 - name: restart mariadb
   service:
     name: mariadb
     state: restarted
+  when: not mariadb_docker
+
+- name: restart mariadb
+  docker_container:
+    name: "{{ mariadb_docker_container_name }}"
+    state: started
+    restart: yes
+  when: mariadb_docker

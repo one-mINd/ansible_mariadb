@@ -1,0 +1,38 @@
+---
+- name: Build mariadb container compose configuration
+  set_fact:
+    docker_mariadb_configuration: |
+          image: "{{ mariadb_docker_image }}"
+          restart: always
+          container_name: "{{ mariadb_docker_container_name }}"
+          environment:
+            - "MARIADB_USER={{ mariadb_docker_mariadb_user }}"
+            - "MYSQL_ROOT_PASSWORD={{ mariadb_docker_mysql_root_password }}"
+            - "MARIADB_PASSWORD={{ mariadb_docker_mariadb_password }}"
+            - "MARIADB_DATABASE={{ mariadb_docker_mariadb_database }}"
+          {% if  mariadb_docker_additional_env | length > 0 -%}
+          {{ mariadb_docker_additional_env | to_yaml  | indent(6) }}
+          {% endif %}
+          volumes:
+            - "{{ mariadb_datadir }}:/var/lib/mysql"
+            - "{{ mariadb_conf_file }}:/etc/mysql/conf.d"
+            - /var/log/mysql:/var/log/mysql
+          ports:
+            - "{{ mariadb_bind_address }}:{{ mariadb_port }}:3306"
+
+          {% if  mariadb_docker_healthcheck -%}
+          healthcheck:
+            test: ["CMD", "mysql", "-u", "{{ mariadb_docker_mariadb_user }}", "--password={{ mariadb_docker_mariadb_password }}",  "-se", "SHOW DATABASES;"]
+            interval: 30s
+            timeout: 10s
+            retries: 5
+          {% endif %}
+
+- name: Setup mariadb
+  docker_compose:
+    state: present
+    project_name: mariadb
+    definition:
+      version: '3.5'
+      services:
+        mariadb: "{{ docker_mariadb_configuration | from_yaml }}"
